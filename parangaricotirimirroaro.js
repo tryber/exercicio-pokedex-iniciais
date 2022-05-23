@@ -31,21 +31,19 @@ const pokémon = {
 
 function tocar(){
     //descomente a linha abaixo para incluir a música
-    //musica.play();
+    musica.play();
 }
 tocar();
 document.addEventListener("click", function() {
     tocar();
 }, {once : true});
 
-/*
-digite aqui o seu código
-dica: utilize os data-attributes para obter o nome do pokemon clicado
-https://developer.mozilla.org/pt-BR/docs/Learn/HTML/Howto/Use_data_attributes
-Utilize as constantes definidas no início do arquivo, que são:
-botoes
-pokemonPic
-pokemonNumber
-pokemonName
-pokemonDescription
-*/
+for (let idx = 0; idx < botoes.length; idx++) {
+    botoes[idx].addEventListener('click', function(event) {
+        let pkmn = event.target.dataset.pokemon;
+        pokemonPic.src = pokémon[pkmn].image;
+        pokemonNumber.innerText = pokémon[pkmn].number;
+        pokemonName.innerHTML = pokémon[pkmn].name;
+        pokemonDescription.innerHTML = pokémon[pkmn].description;
+    });
+}
